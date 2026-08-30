@@ -91,17 +91,11 @@ h4 {
   letter-spacing: 1.35px;
 }
 .brand-mark {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 39px;
-  letter-spacing: -5px;
-  line-height: 1;
-  width: 39px;
-  padding-bottom: 6px;
-}
-.brand-mark span,
-.footer-brand span {
-  color: var(--accent);
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 .brand-light {
   font-weight: 400;
@@ -120,7 +114,6 @@ h4 {
   gap: 9px;
 }
 .navigation-card .brand-mark {
-  font-size: 34px;
   width: 34px;
 }
 .navigation-card .brand small {
@@ -272,14 +265,11 @@ h4 {
   object-fit: cover;
   border-radius: 4px;
 }
-.avatar-period {
-  color: #86d6be;
-}
-.avatar-code {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  opacity: 0.35;
+.avatar img.avatar-logo {
+  width: 68%;
+  height: 68%;
+  object-fit: contain;
+  border-radius: 0;
 }
 .avatar-status {
   position: absolute;
@@ -1130,12 +1120,14 @@ h1 {
   color: #8fa1b6;
 }
 .footer-brand {
-  font-family: var(--font-display);
-  font-size: 25px;
-  letter-spacing: -3px;
-  font-weight: 600;
-  color: #a2b2c4;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
   padding-right: 2px;
+}
+.footer-brand img {
+  display: block;
+  object-fit: contain;
 }
 .site-footer p {
   font-size: 8px;
@@ -1586,7 +1578,6 @@ h1 {
     gap: 8px;
   }
   .brand-mark {
-    font-size: 33px;
     width: 33px;
   }
   .brand small {
@@ -1624,9 +1615,6 @@ h1 {
     height: 90px;
     width: 90px;
     font-size: 44px;
-  }
-  .avatar-code {
-    width: 18px;
   }
   .profile-info {
     padding-top: 13px;
@@ -1864,9 +1852,6 @@ h1 {
   .site-footer > a:last-child {
     font-size: 7px;
     margin-left: auto;
-  }
-  .footer-brand {
-    font-size: 23px;
   }
   .about-panel,
   .stack-panel {

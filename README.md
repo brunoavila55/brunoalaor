@@ -20,6 +20,8 @@ O servidor local abre em `http://127.0.0.1:5173`. Para gerar a versão de produ�
 - **`app/globals.css`**: cores, tipografia, espaçamento e regras responsivas.
 - **`public/cover.png`**: capa original gerada para este projeto. Para usar uma foto, coloque-a em `public/` e informe seu caminho em `profile.avatar` (exemplo: `/avatar.jpg`).
 - **`index.html`**: título, descrição e metadados de compartilhamento.
+- **`public/brand/logo-on-dark.svg`**: logo clara fornecida por Bruno, usada no avatar, menu lateral e rodapé. O SVG original mantém a nitidez em qualquer tamanho. `logo-on-light.svg` guarda a versão escura para fundos claros.
+- **`public/favicon-32.png`**, **`public/favicon.png`** e **`public/apple-touch-icon.png`**: versões de 32, 192 e 180 pixels do favicon PNG fornecido, redimensionadas sem alterar o desenho.
 
 Filtros de projetos, navegação entre seções e diálogos funcionam localmente. Contato e links externos são habilitados ao preencher os dados; não há formulário, backend de mensagens, login ou rastreamento.
 

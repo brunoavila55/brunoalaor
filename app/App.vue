@@ -87,10 +87,15 @@ function contact() {
               v-if="profile.avatar"
               :src="profile.avatar"
               alt="Bruno Alaor"
-            /><template v-else
-              ><span>ba<span class="avatar-period">.</span></span
-              ><Code2 :size="23" class="avatar-code"
-            /></template>
+            />
+            <img
+              v-else
+              class="avatar-logo"
+              src="/brand/logo-on-dark.svg"
+              alt="Logo de Bruno Alaor"
+              width="80"
+              height="80"
+            />
           </div>
           <span class="avatar-status" title="Portfólio em construção" />
         </div>
@@ -390,7 +395,13 @@ function contact() {
             aria-label="Bruno Alaor, início"
             @click="selectTab('portfolio')"
           >
-            <span class="brand-mark">b<span>.</span></span>
+            <img
+              class="brand-mark"
+              src="/brand/logo-on-dark.svg"
+              alt=""
+              width="34"
+              height="34"
+            />
             <span
               >BRUNO<span class="brand-light">ALAOR</span
               ><small>PORTFÓLIO PESSOAL</small></span
@@ -486,9 +497,13 @@ function contact() {
       </aside>
     </div>
     <footer class="site-footer">
-      <a class="footer-brand" href="#" @click="selectTab('portfolio')"
-        >b<span>.</span></a
-      >
+      <a
+        class="footer-brand"
+        href="#"
+        aria-label="Bruno Alaor, início"
+        @click="selectTab('portfolio')"
+        ><img src="/brand/logo-on-dark.svg" alt="" width="24" height="28"
+      /></a>
       <p>
         © {{ new Date().getFullYear() }} {{ profile.name }} <span>·</span> Em
         constante evolução.
