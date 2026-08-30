@@ -15,7 +15,6 @@ import {
   Circle,
   X,
   Check,
-  Menu,
   Gamepad2,
   Heart,
   Coffee,
@@ -43,7 +42,6 @@ const shownProjects = computed(() =>
 const selectedProject = ref(null);
 const projectDialog = ref(null);
 const contactDialog = ref(null);
-const mobileMenu = ref(false);
 const safeLink = (url) => (/^https:\/\//i.test(url ?? "") ? url : null);
 const emailLink = computed(() =>
   /^[^\s@?&#]+@[^\s@?&#]+\.[^\s@?&#]+$/.test(profile.email)
@@ -56,78 +54,27 @@ const hasContacts = computed(
 );
 function selectTab(tab) {
   activeTab.value = tab;
-  mobileMenu.value = false;
 }
 async function showProjects() {
   selectTab("portfolio");
   await nextTick();
-  document
-    .getElementById("projects")
-    ?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
-        : "smooth",
-    });
+  document.getElementById("projects")?.scrollIntoView({
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? "instant"
+      : "smooth",
+  });
 }
 function openProject(project) {
   selectedProject.value = project;
   projectDialog.value.showModal();
 }
 function contact() {
-  mobileMenu.value = false;
   contactDialog.value.showModal();
 }
 </script>
 
 <template>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
-  <header class="site-header">
-    <div class="header-inner">
-      <a
-        class="brand"
-        href="#"
-        aria-label="Bruno Alaor, início"
-        @click="selectTab('portfolio')"
-        ><span class="brand-mark">b<span>.</span></span
-        ><span
-          >BRUNO<span class="brand-light">ALAOR</span
-          ><small>PORTFÓLIO PESSOAL</small></span
-        ></a
-      >
-      <nav class="desktop-nav" aria-label="Navegação principal">
-        <button
-          :class="{ selected: activeTab === 'portfolio' }"
-          @click="selectTab('portfolio')"
-        >
-          Perfil</button
-        ><a href="#projects" @click.prevent="showProjects">Projetos</a
-        ><button
-          :class="{ selected: activeTab === 'about' }"
-          @click="selectTab('about')"
-        >
-          Sobre</button
-        ><button @click="contact">Contato <ArrowUpRight :size="13" /></button>
-      </nav>
-      <span class="header-status"
-        ><span class="status-dot" /> Construindo novas ideias</span
-      >
-      <button
-        class="icon-button mobile-toggle"
-        aria-label="Abrir menu"
-        :aria-expanded="mobileMenu"
-        @click="mobileMenu = !mobileMenu"
-      >
-        <Menu :size="22" />
-      </button>
-    </div>
-    <nav v-if="mobileMenu" class="mobile-nav" aria-label="Navegação móvel">
-      <button @click="selectTab('portfolio')">Portfólio</button
-      ><button @click="selectTab('about')">Sobre mim</button
-      ><button @click="selectTab('stack')">Tecnologias</button
-      ><button @click="contact">Contato</button>
-    </nav>
-  </header>
-
   <main id="main" class="page-shell">
     <section class="profile" aria-label="Perfil de Bruno Alaor">
       <div class="profile-cover">
@@ -458,6 +405,48 @@ function contact() {
         </section>
       </div>
       <aside class="sidebar">
+        <section
+          class="panel navigation-card"
+          aria-label="Navegação do portfólio"
+        >
+          <a
+            class="brand"
+            href="#"
+            aria-label="Bruno Alaor, início"
+            @click="selectTab('portfolio')"
+          >
+            <span class="brand-mark">b<span>.</span></span>
+            <span
+              >BRUNO<span class="brand-light">ALAOR</span
+              ><small>PORTFÓLIO PESSOAL</small></span
+            >
+          </a>
+          <nav class="sidebar-nav" aria-label="Navegação principal">
+            <button
+              :class="{ selected: activeTab === 'portfolio' }"
+              :aria-pressed="activeTab === 'portfolio'"
+              @click="selectTab('portfolio')"
+            >
+              <Circle :size="15" /><span>Perfil</span><ArrowRight :size="13" />
+            </button>
+            <a href="#projects" @click.prevent="showProjects"
+              ><Folder :size="15" /><span>Projetos</span><ArrowRight :size="13"
+            /></a>
+            <button
+              :class="{ selected: activeTab === 'about' }"
+              :aria-pressed="activeTab === 'about'"
+              @click="selectTab('about')"
+            >
+              <Compass :size="15" /><span>Sobre</span><ArrowRight :size="13" />
+            </button>
+            <button @click="contact">
+              <Mail :size="15" /><span>Contato</span><ArrowUpRight :size="13" />
+            </button>
+          </nav>
+          <span class="navigation-status"
+            ><span class="status-dot" /> Construindo novas ideias</span
+          >
+        </section>
         <section class="panel player-card">
           <div class="sidebar-heading">
             <h2>Por trás do código</h2>
