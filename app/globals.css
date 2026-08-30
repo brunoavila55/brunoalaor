@@ -187,8 +187,8 @@ h4 {
 }
 .page-shell {
   max-width: 1148px;
-  margin: 32px auto 0;
-  padding: 0 24px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
 }
 .profile {
   border: 1px solid #ffffff0b;
@@ -1421,8 +1421,7 @@ h1 {
 }
 @media (max-width: 800px) {
   .page-shell {
-    padding: 0 18px;
-    margin-top: 24px;
+    padding: 32px 18px 0;
   }
   .profile-cover {
     height: 195px;
@@ -1594,8 +1593,7 @@ h1 {
     font-size: 6px;
   }
   .page-shell {
-    padding: 0 12px;
-    margin-top: 16px;
+    padding: 24px 12px 0;
   }
   .profile {
     border-radius: 8px;
