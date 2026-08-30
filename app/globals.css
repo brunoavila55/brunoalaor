@@ -187,7 +187,7 @@ h4 {
 }
 .page-shell {
   max-width: 1148px;
-  margin: 31px auto 0;
+  margin: 0 auto;
   padding: 0 24px;
 }
 .profile {
@@ -389,57 +389,7 @@ h1 {
   color: #11271f;
   transform: translateY(-1px);
 }
-.profile-nav {
-  border-top: 1px solid #ffffff08;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 27px;
-  min-height: 55px;
-  background: #111a2780;
-}
-.profile-tabs {
-  display: flex;
-  gap: 30px;
-  align-self: stretch;
-}
-.profile-tabs button {
-  padding: 0 1px;
-  background: none;
-  color: #91a1b5;
-  display: flex;
-  gap: 9px;
-  align-items: center;
-  font-size: 11px;
-  position: relative;
-}
-.profile-tabs button.active {
-  color: #dce7f1;
-}
-.profile-tabs button.active:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--accent);
-}
-.profile-tabs button.active svg {
-  color: var(--accent);
-}
-.tab-count {
-  background: #233438;
-  font-size: 8px;
-  color: #add5c5;
-  padding: 2px 5px;
-  border-radius: 3px;
-  margin-left: 1px;
-}
-.profile-nav-note {
-  font-size: 9px;
-  color: #8a9eb4;
-}
+
 .content-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 274px;
@@ -1401,9 +1351,6 @@ h1 {
   color: #91aab8;
 }
 @media (min-width: 1350px) {
-  .page-shell {
-    margin-top: 38px;
-  }
   .profile-cover {
     height: 236px;
   }
@@ -1474,7 +1421,6 @@ h1 {
 }
 @media (max-width: 800px) {
   .page-shell {
-    margin-top: 20px;
     padding: 0 18px;
   }
   .profile-cover {
@@ -1594,12 +1540,7 @@ h1 {
   .connect-card h2 {
     font-size: 19px;
   }
-  .profile-tabs {
-    gap: 22px;
-  }
-  .profile-nav-note {
-    font-size: 8px;
-  }
+
   .site-footer > span {
     display: none;
   }
@@ -1653,7 +1594,6 @@ h1 {
   }
   .page-shell {
     padding: 0 12px;
-    margin-top: 13px;
   }
   .profile {
     border-radius: 8px;
@@ -1725,23 +1665,7 @@ h1 {
   .profile-details span {
     font-size: 9px;
   }
-  .profile-nav {
-    padding: 0 19px;
-    min-height: 51px;
-  }
-  .profile-tabs {
-    gap: 25px;
-  }
-  .profile-tabs button {
-    font-size: 10px;
-    gap: 7px;
-  }
-  .profile-tabs button svg {
-    width: 13px;
-  }
-  .profile-nav-note {
-    display: none;
-  }
+
   .content-grid {
     display: flex;
     flex-direction: column;
@@ -1977,12 +1901,7 @@ h1 {
   .profile-handle {
     font-size: 8px;
   }
-  .profile-tabs {
-    gap: 16px;
-  }
-  .profile-tabs button {
-    font-size: 9px;
-  }
+
   .section-note {
     font-size: 5px;
   }

@@ -24,11 +24,6 @@ import {
 import { profile, projects } from "./content";
 
 const activeTab = ref("portfolio");
-const tabs = [
-  { id: "portfolio", label: "Portfólio" },
-  { id: "about", label: "Sobre mim" },
-  { id: "stack", label: "Tecnologias" },
-];
 const filter = ref("Todos");
 const categories = computed(() => [
   "Todos",
@@ -117,26 +112,6 @@ function contact() {
             Vamos conversar <ArrowUpRight :size="17" />
           </button>
         </div>
-      </div>
-      <div class="profile-nav">
-        <div class="profile-tabs" aria-label="Seções do perfil">
-          <button
-            v-for="tab in tabs"
-            :key="tab.id"
-            :class="{ active: activeTab === tab.id }"
-            :aria-pressed="activeTab === tab.id"
-            @click="selectTab(tab.id)"
-          >
-            <Layers3 v-if="tab.id === 'portfolio'" :size="15" /><Circle
-              v-else-if="tab.id === 'about'"
-              :size="14"
-            /><Code2 v-else :size="16" />{{ tab.label
-            }}<span v-if="tab.id === 'portfolio'" class="tab-count">{{
-              String(projects.length).padStart(2, "0")
-            }}</span>
-          </button>
-        </div>
-        <span class="profile-nav-note">Um pouco do que eu crio.</span>
       </div>
     </section>
 
@@ -438,6 +413,14 @@ function contact() {
               @click="selectTab('about')"
             >
               <Compass :size="15" /><span>Sobre</span><ArrowRight :size="13" />
+            </button>
+            <button
+              :class="{ selected: activeTab === 'stack' }"
+              :aria-pressed="activeTab === 'stack'"
+              @click="selectTab('stack')"
+            >
+              <Code2 :size="15" /><span>Tecnologias</span
+              ><ArrowRight :size="13" />
             </button>
             <button @click="contact">
               <Mail :size="15" /><span>Contato</span><ArrowUpRight :size="13" />
