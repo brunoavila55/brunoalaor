@@ -2,24 +2,18 @@
 import { computed, onMounted } from "vue";
 import {
   ArrowUpRight,
-  ArrowRight,
-  Code2,
-  BriefcaseBusiness,
+  Award,
   Compass,
   Mail,
   MapPin,
   Laptop,
 } from "@lucide/vue";
-import { profile, career, skills } from "./content";
+import { profile } from "./content";
 import CareerPanel from "./CareerPanel.vue";
 import CollectionPanel from "./CollectionPanel.vue";
 import ProjectsPanel from "./ProjectsPanel.vue";
-import SkillIcon from "./SkillIcon.vue";
 import ContactIcon from "./ContactIcon.vue";
 
-const currentJob = computed(() =>
-  career.find((job) => job.status === "current"),
-);
 const safeLink = (url) => (/^https:\/\//i.test(url ?? "") ? url : null);
 const emailLink = computed(() =>
   /^[^\s@?&#]+@[^\s@?&#]+\.[^\s@?&#]+$/.test(profile.email)
@@ -145,9 +139,11 @@ onMounted(() => {
             <h2 id="about-title"><Compass :size="17" /> Sobre mim</h2>
             <span class="section-note">APRESENTAÇÃO</span>
           </div>
-          <p v-for="paragraph in profile.bio" :key="paragraph">
-            {{ paragraph }}
-          </p>
+          <div class="about-content">
+            <p v-for="paragraph in profile.bio" :key="paragraph">
+              {{ paragraph }}
+            </p>
+          </div>
         </section>
         <CollectionPanel />
         <ProjectsPanel />
@@ -159,50 +155,34 @@ onMounted(() => {
             <h2>Perfil profissional</h2>
             <Compass :size="16" />
           </div>
-          <p>{{ profile.summary }}</p>
-          <template v-if="currentJob">
-            <div class="sidebar-divider" />
-            <div class="currently-label">ATUAÇÃO ATUAL</div>
-            <div class="currently">
-              <span class="currently-icon"
-                ><BriefcaseBusiness :size="21"
-              /></span>
-              <div>
-                <strong>{{ currentJob.role }}</strong
-                ><span>{{ currentJob.company }}</span>
-              </div>
-            </div>
-            <span v-if="currentJob.demo" class="sample-label sidebar-demo"
-              >EXPERIÊNCIA DE EXEMPLO</span
-            >
-          </template>
-          <a class="text-button" href="#about"
-            >Mais sobre mim <ArrowRight :size="15"
-          /></a>
+          <p>
+            Comprometido, pontual e proativo, com facilidade de adaptação e
+            aprendizado contínuo. Organizado, atento a detalhes e responsável,
+            trabalha bem tanto sozinho quanto em equipe, sempre buscando
+            qualidade nos resultados.
+          </p>
         </section>
         <section class="panel stack-card">
           <div class="sidebar-heading">
-            <h2>Competências técnicas</h2>
-            <Code2 :size="16" />
+            <h2>Certificações</h2>
+            <Award :size="16" />
           </div>
-          <p class="sidebar-subtitle">
-            {{ skills.length }} competências{{
-              skills.some((item) => item.demo) ? " · exemplos" : " cadastradas"
-            }}.
-          </p>
-          <div class="sidebar-skills">
-            <span
-              v-for="item in skills"
-              :key="item.id"
-              :title="item.name"
-              role="img"
-              :aria-label="item.name"
-              ><SkillIcon :name="item.id" :size="24"
-            /></span>
+          <p class="sidebar-subtitle">Formação e aprendizado contínuo.</p>
+          <div class="sidebar-certifications">
+            <article class="certification-item">
+              <img
+                src="/certifications/lfs101.png"
+                alt="LFS101 — Introduction to Linux, The Linux Foundation"
+                width="340"
+                height="340"
+              />
+              <div>
+                <strong>LFS101</strong>
+                <span>Introduction to Linux</span>
+                <small>The Linux Foundation</small>
+              </div>
+            </article>
           </div>
-          <a class="text-button" href="#skills"
-            >Ver competências <ArrowRight :size="15"
-          /></a>
         </section>
         <section class="connect-card">
           <span class="connect-icon"><Mail :size="21" /></span>

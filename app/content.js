@@ -12,9 +12,13 @@ export const profile = {
   intro:
     "Trabalho com a infraestrutura interna de um provedor de internet: servidores Linux, virtualização, monitoramento e sistemas de negócio.",
   bio: [
-    "Comecei no suporte técnico em 2022, atendendo cliente residencial e corporativo. Hoje trabalho na infraestrutura interna do provedor: servidores, virtualização, monitoramento e os sistemas de negócio.",
-    "Desenvolvo o que falta. Escrevo APIs em Go e scripts em Python para integrar sistemas e automatizar rotina, e mantenho projetos próprios na mesma linha, fora do horário de trabalho.",
-    "Sou formado em Engenharia Florestal pela UNIPAMPA. Migrei para tecnologia por conta própria, entrei pelo suporte e cheguei à infraestrutura.",
+    "Atuo no NOC da New Life Fibra, com foco em manter a operação do provedor estável e confiável.",
+    "Trabalho com infraestrutura e monitoramento, lidando com o ambiente operacional e garantindo a disponibilidade dos serviços.",
+    "Trabalho com monitoramento utilizando Zabbix e Grafana, criando dashboards e acompanhando a rede para antecipar falhas.",
+    "Na parte de dados, utilizo SQL para estruturar informações operacionais e criar dashboards que auxiliam na análise e tomada de decisão.",
+    "Ao longo das atividades, atuo na melhoria contínua da infraestrutura do ISP, trabalhando na expansão de capacidade, substituição de equipamentos e otimização da rede para garantir melhor desempenho e estabilidade.",
+    "Também participo de iniciativas de modernização do ambiente, incluindo migração de serviços para containers, além do desenvolvimento de scripts em Python e APIs em Go para integração de sistemas e automação de rotinas.",
+    "Mais recentemente, tenho explorado o uso de LLMs integrados a sistemas de helpdesk para automação de fluxos de suporte.",
   ],
   avatar: "/avatar.png",
   email: "contato@brunoalaor.com.br",

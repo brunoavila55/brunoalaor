@@ -31,11 +31,11 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
     tabindex="-1"
     aria-labelledby="skills-title"
   >
-    <div class="section-heading">
-      <h2 id="skills-title"><Server :size="17" /> Competências</h2>
-      <span class="section-note">CONHECIMENTOS TÉCNICOS</span>
-    </div>
     <div class="panel skills-panel">
+      <div class="section-heading">
+        <h2 id="skills-title"><Server :size="17" /> Competências</h2>
+        <span class="section-note">CONHECIMENTOS TÉCNICOS</span>
+      </div>
       <div class="professional-intro">
         <span class="section-kicker">TECNOLOGIAS E MÉTODOS</span>
         <h3>Conhecimento aplicado à infraestrutura.</h3>
@@ -138,17 +138,17 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 
 <style>
 .professional-intro {
-  margin: 4px 0 24px;
+  margin: var(--space-1) 0 var(--space-6);
 }
 .professional-intro h3 {
-  font: 500 25px/1.35 var(--font-display);
+  font: 500 var(--text-3xl) / 1.35 var(--font-display);
   letter-spacing: -0.5px;
-  margin: 10px 0 12px;
+  margin: var(--space-3) 0;
   color: var(--foreground);
   max-width: 430px;
 }
 .professional-intro > p {
-  font-size: 12px;
+  font-size: var(--text-base);
   color: var(--muted);
   max-width: 460px;
   line-height: 1.9;
@@ -156,17 +156,17 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 .skill-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: var(--space-1);
   border-bottom: 1px solid var(--border);
-  padding-bottom: 16px;
+  padding-bottom: var(--space-4);
 }
 .skill-filters button {
   background: transparent;
   border: 1px solid transparent;
-  padding: 7px 10px;
+  padding: var(--space-2) var(--space-3);
   color: var(--muted);
-  border-radius: 4px;
-  font-size: 10px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
   min-height: 34px;
 }
 .skill-filters button.active {
@@ -179,32 +179,32 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   color: var(--foreground);
 }
 .skill-count {
-  margin: 17px 0 13px;
-  font-size: 10px;
+  margin: var(--space-4) 0 var(--space-3);
+  font-size: var(--text-xs);
   color: var(--muted);
 }
 .skills-layout {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  gap: var(--space-6);
   align-items: stretch;
 }
 .skill-list {
   display: grid;
   grid-auto-rows: 1fr;
-  gap: 6px;
+  gap: var(--space-2);
 }
 .skill-row {
   display: flex;
   align-items: center;
   min-width: 0;
   min-height: 63px;
-  gap: 11px;
+  gap: var(--space-3);
   text-align: left;
-  padding: 12px;
+  padding: var(--space-3);
   background: var(--surface-tint);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 .skill-row.selected {
   border-color: var(--accent);
@@ -219,9 +219,6 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   width: 37px;
   height: 37px;
   flex-shrink: 0;
-  background: var(--surface-selected);
-  border: 1px solid var(--border-accent);
-  border-radius: 7px;
   color: var(--accent);
 }
 .skill-row-label {
@@ -229,16 +226,16 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   min-width: 0;
 }
 .skill-row strong {
-  font-size: 12px;
+  font-size: var(--text-base);
   line-height: 1.4;
   font-weight: 500;
   display: block;
   overflow-wrap: anywhere;
 }
 .skill-row small {
-  font-size: 9px;
+  font-size: var(--text-2xs);
   color: var(--muted);
-  margin-top: 4px;
+  margin-top: var(--space-1);
   display: block;
 }
 .skill-row > svg {
@@ -253,8 +250,8 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   grid-area: 1 / 1;
   background: var(--surface-raised);
   border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 5px;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
   min-width: 0;
 }
 .skill-detail:not(.active) {
@@ -265,14 +262,14 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 .skill-detail-title {
-  margin: 16px 0;
+  margin: var(--space-4) 0;
 }
 .skill-detail h4 {
-  font: 500 24px var(--font-display);
+  font: 500 var(--text-3xl) var(--font-display);
   margin: 0;
   color: var(--foreground);
   overflow-wrap: anywhere;
@@ -280,41 +277,41 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 }
 .skill-detail > p,
 .skill-evidence p {
-  font-size: 11px;
+  font-size: var(--text-sm);
   line-height: 1.9;
   color: var(--muted);
 }
 .skill-applications {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .skill-detail h5 {
-  font-size: 10px;
+  font-size: var(--text-xs);
   font-weight: 500;
   color: var(--text);
-  margin: 0 0 12px;
+  margin: 0 0 var(--space-3);
 }
 .skill-detail ul {
-  padding-left: 15px;
+  padding-left: var(--space-4);
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: var(--text-xs);
   line-height: 1.9;
 }
 .skill-detail li {
-  margin-top: 5px;
+  margin-top: var(--space-1);
 }
 .skill-detail li::marker {
   color: var(--accent);
 }
 .skill-evidence {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .skill-detail > .text-button {
-  margin-top: 18px;
+  margin-top: var(--space-4);
 }
 @media (max-width: 1050px) {
   .skills-layout {
@@ -324,8 +321,8 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .skill-row {
-    gap: 8px;
-    padding: 10px;
+    gap: var(--space-2);
+    padding: var(--space-3);
   }
 }
 @media (max-width: 800px) and (min-width: 601px) {
@@ -335,15 +332,15 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 }
 @media (max-width: 600px) {
   .professional-intro h3 {
-    font-size: 23px;
+    font-size: var(--text-2xl);
   }
   .skill-filters button {
-    font-size: 9px;
-    padding: 8px;
+    font-size: var(--text-2xs);
+    padding: var(--space-2);
     min-height: 36px;
   }
   .skill-row strong {
-    font-size: 11px;
+    font-size: var(--text-sm);
   }
   .skill-row .skill-icon {
     width: 29px;

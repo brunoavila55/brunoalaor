@@ -17,13 +17,13 @@ const previous = computed(() =>
 
 <template>
   <section class="experience-view" aria-labelledby="experience-title">
-    <div class="section-heading">
-      <h2 id="experience-title">
-        <BriefcaseBusiness :size="17" /> Experiência profissional
-      </h2>
-      <span class="section-note">TRAJETÓRIA</span>
-    </div>
     <article v-if="current" class="panel current-position">
+      <div class="section-heading">
+        <h2 id="experience-title">
+          <BriefcaseBusiness :size="17" /> Experiência profissional
+        </h2>
+        <span class="section-note">TRAJETÓRIA</span>
+      </div>
       <div class="position-heading">
         <span class="section-kicker">ATUAÇÃO ATUAL</span
         ><span v-if="current.demo" class="sample-label">EXEMPLO</span>
@@ -68,7 +68,10 @@ const previous = computed(() =>
       A experiência profissional atual será adicionada aqui.
     </p>
 
-    <section class="previous-positions" aria-labelledby="previous-title">
+    <section
+      class="panel previous-positions"
+      aria-labelledby="previous-title"
+    >
       <div class="section-heading">
         <h2 id="previous-title">Experiências anteriores</h2>
       </div>
@@ -129,23 +132,23 @@ const previous = computed(() =>
 
 <style>
 .current-position {
-  padding: 20px;
+  padding: var(--space-5);
   border-top: 2px solid var(--accent);
 }
 .current-position .position-heading {
-  margin-bottom: 14px;
+  margin-bottom: var(--space-4);
 }
 .position-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 22px;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
 }
 .position-identity,
 .previous-identity {
   display: flex;
-  gap: 15px;
+  gap: var(--space-4);
   align-items: center;
 }
 .position-identity > div,
@@ -167,75 +170,75 @@ const previous = computed(() =>
   flex-shrink: 0;
   background: var(--surface-selected);
   border: 1px solid var(--border-accent);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   color: var(--accent);
 }
 .position-identity h3 {
-  font: 500 24px/1.3 var(--font-display);
+  font: 500 var(--text-3xl) / 1.3 var(--font-display);
   color: var(--foreground);
   overflow-wrap: anywhere;
 }
 .position-identity p {
-  font-size: 12px;
+  font-size: var(--text-base);
   color: var(--text);
-  margin-top: 5px;
+  margin-top: var(--space-1);
 }
 .position-period {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 7px;
-  font-size: 10px;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
   color: var(--muted);
   line-height: 1.6;
 }
 .current-position > .position-period {
-  margin-top: 12px;
+  margin-top: var(--space-3);
 }
 .position-description {
-  font-size: 12px;
+  font-size: var(--text-base);
   line-height: 1.9;
   color: var(--text);
-  margin-top: 17px;
+  margin-top: var(--space-4);
 }
 .current-position > .position-description {
-  margin-top: 12px;
+  margin-top: var(--space-3);
   line-height: 1.7;
 }
 .position-focus {
-  margin-top: 22px;
-  padding: 16px 18px;
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
   border-left: 2px solid var(--border-accent);
   background: var(--surface-selected);
 }
 .position-focus h4,
 .position-highlights > h4 {
-  font-size: 11px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text);
 }
 .position-focus p {
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--muted);
   line-height: 1.8;
-  margin-top: 7px;
+  margin-top: var(--space-2);
 }
 .position-highlights {
-  margin-top: 18px;
-  padding-top: 16px;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .position-highlights ul,
 .previous-highlights {
   list-style: none;
   padding: 0;
-  margin: 19px 0 0;
+  margin: var(--space-5) 0 0;
 }
 .position-highlights li,
 .previous-highlights li {
   position: relative;
-  padding-left: 17px;
-  margin-top: 17px;
+  padding-left: var(--space-4);
+  margin-top: var(--space-4);
 }
 .position-highlights li::before,
 .previous-highlights li::before {
@@ -250,44 +253,45 @@ const previous = computed(() =>
 }
 .position-highlights strong,
 .previous-highlights strong {
-  font-size: 11px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--text);
 }
 .position-highlights li p,
 .previous-highlights li p {
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--muted);
   line-height: 1.8;
-  margin-top: 5px;
+  margin-top: var(--space-1);
 }
 .position-highlights ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: 16px 24px;
-  margin-top: 14px;
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-4);
 }
 .position-highlights li {
   margin-top: 0;
-  padding-left: 12px;
+  padding-left: var(--space-3);
 }
 .position-highlights li p {
-  margin-top: 4px;
+  margin-top: var(--space-1);
   line-height: 1.65;
 }
 .previous-positions {
-  margin-top: 30px;
+  margin-top: var(--space-8);
+  padding: var(--space-5);
 }
 .experience-timeline {
   position: relative;
-  padding-left: 20px;
+  padding-left: var(--space-5);
   border-left: 1px solid var(--border);
-  margin-left: 5px;
+  margin-left: var(--space-1);
 }
 .previous-position {
   position: relative;
-  margin-bottom: 14px;
-  padding: 22px;
+  margin-bottom: var(--space-4);
+  padding: var(--space-5);
 }
 .previous-position::before {
   content: "";
@@ -301,36 +305,36 @@ const previous = computed(() =>
   border-radius: 50%;
 }
 .previous-position .position-heading {
-  margin-bottom: 13px;
+  margin-bottom: var(--space-3);
 }
 .previous-position h3 {
-  font: 500 19px/1.3 var(--font-display);
+  font: 500 var(--text-2xl) / 1.3 var(--font-display);
   color: var(--foreground);
   overflow-wrap: anywhere;
 }
 .previous-company {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: var(--space-2);
   align-items: center;
-  font-size: 11px;
+  font-size: var(--text-sm);
   color: var(--text);
-  margin-top: 9px;
+  margin-top: var(--space-2);
 }
 .position-details {
-  margin-top: 18px;
+  margin-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .position-details summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--space-3);
   list-style: none;
   cursor: pointer;
   min-height: 45px;
   color: var(--text);
-  font-size: 10px;
+  font-size: var(--text-xs);
   padding-top: 4px;
 }
 .position-details summary::-webkit-details-marker {
@@ -352,14 +356,14 @@ const previous = computed(() =>
 @media (max-width: 800px) {
   .current-position,
   .previous-position {
-    padding: 20px;
+    padding: var(--space-5);
   }
   .position-identity {
-    gap: 11px;
+    gap: var(--space-3);
     align-items: flex-start;
   }
   .position-identity h3 {
-    font-size: 21px;
+    font-size: var(--text-2xl);
   }
   .company-icon {
     width: 43px;
@@ -373,19 +377,19 @@ const previous = computed(() =>
 @media (max-width: 600px) {
   .current-position,
   .previous-position {
-    padding: 18px;
+    padding: var(--space-4);
   }
   .experience-timeline {
-    padding-left: 14px;
+    padding-left: var(--space-3);
   }
   .previous-position::before {
-    left: -19px;
+    left: -17px;
   }
   .position-identity h3 {
-    font-size: 22px;
+    font-size: var(--text-2xl);
   }
   .position-focus {
-    padding: 14px;
+    padding: var(--space-4);
   }
 }
 </style>

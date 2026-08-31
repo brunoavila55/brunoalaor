@@ -17,16 +17,16 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
     tabindex="-1"
     aria-labelledby="projects-title"
   >
-    <div class="section-heading">
-      <h2 id="projects-title"><FolderGit2 :size="17" /> Projetos</h2>
-      <span class="section-note">SOLUÇÕES EM PRÁTICA</span>
-    </div>
     <article
-      v-for="project in publishedProjects"
+      v-for="(project, index) in publishedProjects"
       :key="project.id"
       class="panel showcase-card"
       :aria-labelledby="`project-${project.id}-title`"
     >
+      <div v-if="index === 0" class="section-heading">
+        <h2 id="projects-title"><FolderGit2 :size="17" /> Projetos</h2>
+        <span class="section-note">SOLUÇÕES EM PRÁTICA</span>
+      </div>
       <div class="showcase-heading">
         <span class="section-kicker">PROJETO AUTORAL</span>
         <span v-if="project.status" class="showcase-status">{{
@@ -70,39 +70,39 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 
 <style scoped>
 .showcase-card {
-  padding: 24px;
+  padding: var(--space-6);
 }
 .showcase-card + .showcase-card {
-  margin-top: 16px;
+  margin-top: var(--space-4);
 }
 .showcase-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-3);
 }
 .showcase-status {
   border: 1px solid var(--border-accent);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   background: var(--surface-selected);
-  padding: 5px 9px;
-  font-size: 10px;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--text-xs);
   color: var(--accent);
 }
 .showcase-card h3 {
-  margin-top: 16px;
-  font: 500 30px/1.2 var(--font-display);
+  margin-top: var(--space-4);
+  font: 500 var(--text-4xl) / 1.2 var(--font-display);
   color: var(--foreground);
 }
 .showcase-subtitle {
-  margin-top: 6px;
-  font-size: 12px;
+  margin-top: var(--space-2);
+  font-size: var(--text-base);
   color: var(--accent);
 }
 .showcase-description {
-  margin-top: 16px;
-  font-size: 12px;
+  margin-top: var(--space-4);
+  font-size: var(--text-base);
   line-height: 1.8;
   color: var(--text);
 }
@@ -112,58 +112,58 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
-  gap: 8px;
+  gap: var(--space-2);
 }
 .showcase-features {
-  margin-top: 16px;
-  font-size: 10px;
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
   color: var(--muted);
 }
 .showcase-features li {
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 6px 9px;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
 }
 .showcase-impact {
-  margin-top: 20px;
-  padding: 14px 16px;
+  margin-top: var(--space-5);
+  padding: var(--space-4);
   border-left: 2px solid var(--accent);
   background: var(--surface-tint);
 }
 .showcase-impact h4 {
-  font-size: 11px;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--foreground);
 }
 .showcase-impact p {
-  font-size: 11px;
+  font-size: var(--text-sm);
   line-height: 1.8;
   color: var(--muted);
-  margin-top: 5px;
+  margin-top: var(--space-1);
 }
 .showcase-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 20px;
-  padding-top: 18px;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 .showcase-stack {
   margin: 0;
-  gap: 14px;
-  font-size: 10px;
+  gap: var(--space-4);
+  font-size: var(--text-xs);
   color: var(--muted);
 }
 .showcase-link {
-  gap: 10px;
+  gap: var(--space-3);
   min-height: 42px;
 }
 @media (max-width: 600px) {
   .showcase-card {
-    padding: 18px;
+    padding: var(--space-4);
   }
   .showcase-link {
     width: 100%;
