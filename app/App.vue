@@ -4,7 +4,6 @@ import {
   ArrowUpRight,
   Award,
   Compass,
-  Mail,
   MapPin,
   Laptop,
 } from "@lucide/vue";
@@ -69,10 +68,10 @@ onMounted(() => {
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <Aurora
     class="site-aurora"
-    :color-stops="['#2f89a8', '#647da8', '#bd9f67']"
-    :blend="0.68"
-    :amplitude="0.82"
-    :speed="0.26"
+    :color-stops="['#2f6f8f', '#5f758f', '#3d5a78']"
+    :blend="0.5"
+    :amplitude="0.55"
+    :speed="0.22"
   />
   <main id="main" class="page-shell">
     <section class="profile" :aria-label="`Perfil de ${profile.name}`">
@@ -207,16 +206,6 @@ onMounted(() => {
               </div>
             </article>
           </div>
-        </section>
-        <section class="connect-card">
-          <span class="connect-icon"><Mail :size="21" /></span>
-          <h2>Vamos conversar?</h2>
-          <p>
-            Entre em contato para conversar sobre oportunidades profissionais.
-          </p>
-          <a class="button button-outline" href="#contact"
-            >Entrar em contato <ArrowUpRight :size="16"
-          /></a>
         </section>
         <div class="sidebar-footnote">PORTFÓLIO PROFISSIONAL</div>
       </aside>
