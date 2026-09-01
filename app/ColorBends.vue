@@ -11,6 +11,7 @@
 import {
   Clock,
   Color,
+  DoubleSide,
   Mesh,
   OrthographicCamera,
   PlaneGeometry,
@@ -90,87 +91,57 @@ varying vec2 vUv;
 
 void main() {
   float t = uTime * uSpeed;
-  vec2 p = vUv * 2.0 - 1.0;
-  p += uPointer * uParallax * 0.1;
-  vec2 rp = vec2(
+  float aspect = max(uCanvas.x / max(uCanvas.y, 1.0), 0.5);
+  vec2 p = (vUv * 2.0 - 1.0) * vec2(aspect, 1.0);
+  p /= max(uScale, 0.0001);
+  vec2 rotated = vec2(
     p.x * uRot.x - p.y * uRot.y,
     p.x * uRot.y + p.y * uRot.x
   );
-  vec2 q = vec2(rp.x * (uCanvas.x / uCanvas.y), rp.y);
-  q /= max(uScale, 0.0001);
-  q /= 0.5 + 0.2 * dot(q, q);
-  q += 0.2 * cos(t) - 7.56;
-  vec2 toward = uPointer - rp;
-  q += toward * uMouseInfluence * 0.2;
+  rotated += uPointer * uParallax * 0.18;
 
   for (int j = 0; j < 5; j++) {
-    if (j >= uIterations - 1) break;
-    vec2 rr = sin(
-      1.5 * (q.yx * uFrequency) + 2.0 * cos(q * uFrequency)
-    );
-    q += (rr - q) * 0.15;
+    if (j >= uIterations) break;
+    float phase = float(j) * 1.7;
+    rotated.x += sin(
+      rotated.y * 2.2 * uFrequency + t * 0.7 + phase
+    ) * 0.08 * uWarpStrength;
+    rotated.y += cos(
+      rotated.x * 2.0 * uFrequency - t * 0.55 + phase
+    ) * 0.06 * uWarpStrength;
   }
 
-  vec3 col = vec3(0.0);
-  float a = 1.0;
+  vec3 base = vec3(0.003, 0.035, 0.055);
+  if (uColorCount > 0) base += uColors[0] * 0.055;
 
-  if (uColorCount > 0) {
-    vec2 s = q;
-    vec3 sumCol = vec3(0.0);
-    float cover = 0.0;
-    for (int i = 0; i < MAX_COLORS; ++i) {
-      if (i >= uColorCount) break;
-      s -= 0.01;
-      vec2 r = sin(
-        1.5 * (s.yx * uFrequency) + 2.0 * cos(s * uFrequency)
+  vec3 col = base;
+  float cover = 0.0;
+  float colorDivisor = max(float(uColorCount - 1), 1.0);
+  float width = 0.13 + 0.026 * max(uBandWidth, 1.0);
+
+  for (int i = 0; i < MAX_COLORS; ++i) {
+    if (i >= uColorCount) break;
+    float fi = float(i);
+    float center = mix(-0.72, 0.72, fi / colorDivisor);
+    float wave = center
+      + 0.23 * sin(
+        rotated.x * 2.15 * uFrequency + t * (0.7 + fi * 0.08) + fi * 1.8
+      )
+      + 0.09 * sin(
+        rotated.x * 4.6 * uFrequency - t * 0.45 + fi * 0.9
       );
-      float m0 = length(
-        r + sin(5.0 * r.y * uFrequency - 3.0 * t + float(i)) / 4.0
-      );
-      float kBelow = clamp(uWarpStrength, 0.0, 1.0);
-      float kMix = pow(kBelow, 0.3);
-      float gain = 1.0 + max(uWarpStrength - 1.0, 0.0);
-      vec2 disp = (r - s) * kBelow;
-      vec2 warped = s + disp * gain;
-      float m1 = length(
-        warped + sin(
-          5.0 * warped.y * uFrequency - 3.0 * t + float(i)
-        ) / 4.0
-      );
-      float m = mix(m0, m1, kMix);
-      float w = 1.0 - exp(-uBandWidth / exp(uBandWidth * m));
-      sumCol += uColors[i] * w;
-      cover = max(cover, w);
-    }
-    col = clamp(sumCol, 0.0, 1.0);
-    a = uTransparent > 0 ? cover : 1.0;
-  } else {
-    vec2 s = q;
-    for (int k = 0; k < 3; ++k) {
-      s -= 0.01;
-      vec2 r = sin(
-        1.5 * (s.yx * uFrequency) + 2.0 * cos(s * uFrequency)
-      );
-      float m0 = length(
-        r + sin(5.0 * r.y * uFrequency - 3.0 * t + float(k)) / 4.0
-      );
-      float kBelow = clamp(uWarpStrength, 0.0, 1.0);
-      float kMix = pow(kBelow, 0.3);
-      float gain = 1.0 + max(uWarpStrength - 1.0, 0.0);
-      vec2 disp = (r - s) * kBelow;
-      vec2 warped = s + disp * gain;
-      float m1 = length(
-        warped + sin(
-          5.0 * warped.y * uFrequency - 3.0 * t + float(k)
-        ) / 4.0
-      );
-      float m = mix(m0, m1, kMix);
-      col[k] = 1.0 - exp(-uBandWidth / exp(uBandWidth * m));
-    }
-    a = uTransparent > 0 ? max(max(col.r, col.g), col.b) : 1.0;
+    wave += uPointer.y * uMouseInfluence * 0.11;
+    float distanceToBand = abs(rotated.y - wave);
+    float core = 1.0 - smoothstep(0.0, width, distanceToBand);
+    float halo = (
+      1.0 - smoothstep(width, width * 2.7, distanceToBand)
+    ) * 0.34;
+    float weight = core + halo;
+    col += uColors[i] * weight;
+    cover = max(cover, weight);
   }
 
-  col *= uIntensity;
+  col = clamp(col * uIntensity, 0.0, 1.0);
 
   if (uNoise > 0.0001) {
     float n = fract(
@@ -181,8 +152,9 @@ void main() {
     col = clamp(col, 0.0, 1.0);
   }
 
-  vec3 rgb = uTransparent > 0 ? col * a : col;
-  gl_FragColor = vec4(rgb, a);
+  float alpha = uTransparent > 0 ? clamp(cover * 1.2, 0.0, 1.0) : 1.0;
+  vec3 rgb = uTransparent > 0 ? col * alpha : col;
+  gl_FragColor = vec4(rgb, alpha);
 }
 `;
 
@@ -225,7 +197,10 @@ const applyProps = () => {
   const colors = props.colors
     .filter(Boolean)
     .slice(0, MAX_COLORS)
-    .map((hex) => new Color(hex));
+    .map((hex) => {
+      const color = new Color(hex);
+      return new Vector3(color.r, color.g, color.b);
+    });
   const uniforms = material.uniforms.uColors.value as Vector3[];
   for (let index = 0; index < MAX_COLORS; index += 1) {
     if (colors[index]) uniforms[index].copy(colors[index]);
@@ -271,6 +246,7 @@ onMounted(() => {
       uBandWidth: { value: props.bandWidth },
     },
     premultipliedAlpha: true,
+    side: DoubleSide,
     transparent: true,
   });
   materialRef.value = material;
