@@ -75,26 +75,9 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
-  background: var(--background);
-  overflow-x: hidden;
-}
-#app {
-  min-height: 100vh;
-  position: relative;
-  isolation: isolate;
-}
-.site-aurora {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.78;
   background:
-    radial-gradient(circle at 50% 18%, #5f758f2e, transparent 52%),
+    radial-gradient(ellipse at 50% 22%, #5f758f80, transparent 63%),
     var(--background);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
 }
 button,
 a {

@@ -14,7 +14,6 @@ import CollectionPanel from "./CollectionPanel.vue";
 import ProjectsPanel from "./ProjectsPanel.vue";
 import ContactIcon from "./ContactIcon.vue";
 import SpecularButton from "./SpecularButton.vue";
-import Aurora from "./Aurora.vue";
 
 const safeLink = (url) => (/^https:\/\//i.test(url ?? "") ? url : null);
 const emailLink = computed(() =>
@@ -66,13 +65,6 @@ onMounted(() => {
 
 <template>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
-  <Aurora
-    class="site-aurora"
-    :color-stops="['#1e3a52', '#5f758f', '#bd9f67']"
-    :blend="0.55"
-    :amplitude="0.7"
-    :speed="0.25"
-  />
   <main id="main" class="page-shell">
     <section class="profile" :aria-label="`Perfil de ${profile.name}`">
       <div class="profile-cover">
