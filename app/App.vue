@@ -15,7 +15,7 @@ import ProjectsPanel from "./ProjectsPanel.vue";
 import ContactIcon from "./ContactIcon.vue";
 import SpecularButton from "./SpecularButton.vue";
 
-const ColorBends = defineAsyncComponent(() => import("./ColorBends.vue"));
+const Aurora = defineAsyncComponent(() => import("./Aurora.vue"));
 
 const safeLink = (url) => (/^https:\/\//i.test(url ?? "") ? url : null);
 const emailLink = computed(() =>
@@ -67,21 +67,12 @@ onMounted(() => {
 
 <template>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
-  <ColorBends
-    class="site-color-bends"
-    :colors="['#2f89a8', '#647da8', '#bd9f67']"
-    :rotation="100"
-    :speed="0.12"
-    :scale="1"
-    :frequency="1"
-    :warp-strength="1"
-    :mouse-influence="0.5"
-    :noise="0.025"
-    :parallax="0.25"
-    :iterations="2"
-    :intensity="0.95"
-    :band-width="5.2"
-    transparent
+  <Aurora
+    class="site-aurora"
+    :color-stops="['#2f89a8', '#647da8', '#bd9f67']"
+    :blend="0.68"
+    :amplitude="0.82"
+    :speed="0.26"
   />
   <main id="main" class="page-shell">
     <section class="profile" :aria-label="`Perfil de ${profile.name}`">

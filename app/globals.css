@@ -84,14 +84,13 @@ body {
   position: relative;
   isolation: isolate;
 }
-.site-color-bends {
+.site-aurora {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.48;
-  filter: saturate(0.88) contrast(0.98);
-  background: var(--background);
+  opacity: 0.72;
+  filter: saturate(0.9) contrast(0.98);
 }
 button,
 a {
