@@ -75,8 +75,24 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  background: var(--background);
+  overflow-x: hidden;
+}
+#app {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+.site-color-bends {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.68;
+  filter: saturate(0.82) contrast(0.96);
   background:
-    radial-gradient(ellipse at 50% 22%, #5f758f80, transparent 63%),
+    radial-gradient(ellipse at 50% 18%, #5f758f4d, transparent 62%),
     var(--background);
 }
 button,

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, defineAsyncComponent, onMounted } from "vue";
 import {
   ArrowUpRight,
   Award,
@@ -14,6 +14,8 @@ import CollectionPanel from "./CollectionPanel.vue";
 import ProjectsPanel from "./ProjectsPanel.vue";
 import ContactIcon from "./ContactIcon.vue";
 import SpecularButton from "./SpecularButton.vue";
+
+const ColorBends = defineAsyncComponent(() => import("./ColorBends.vue"));
 
 const safeLink = (url) => (/^https:\/\//i.test(url ?? "") ? url : null);
 const emailLink = computed(() =>
@@ -65,6 +67,22 @@ onMounted(() => {
 
 <template>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <ColorBends
+    class="site-color-bends"
+    :colors="['#1e3a52', '#5f758f', '#bd9f67', '#a7867f']"
+    :rotation="112"
+    :speed="0.08"
+    :scale="1.15"
+    :frequency="0.85"
+    :warp-strength="0.65"
+    :mouse-influence="0.18"
+    :noise="0.04"
+    :parallax="0.15"
+    :iterations="2"
+    :intensity="0.82"
+    :band-width="4.8"
+    transparent
+  />
   <main id="main" class="page-shell">
     <section class="profile" :aria-label="`Perfil de ${profile.name}`">
       <div class="profile-cover">
