@@ -69,18 +69,18 @@ onMounted(() => {
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
   <ColorBends
     class="site-color-bends"
-    :colors="['#1e3a52', '#5f758f', '#bd9f67', '#a7867f']"
+    :colors="['#1e3a52', '#5f758f', '#a8bfda', '#bd9f67']"
     :rotation="112"
-    :speed="0.08"
+    :speed="0.18"
     :scale="1.15"
-    :frequency="0.85"
-    :warp-strength="0.65"
-    :mouse-influence="0.18"
+    :frequency="0.9"
+    :warp-strength="0.85"
+    :mouse-influence="0.65"
     :noise="0.04"
-    :parallax="0.15"
+    :parallax="0.32"
     :iterations="2"
-    :intensity="0.82"
-    :band-width="4.8"
+    :intensity="1.05"
+    :band-width="5.6"
     transparent
   />
   <main id="main" class="page-shell">
