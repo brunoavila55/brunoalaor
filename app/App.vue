@@ -79,8 +79,8 @@ onMounted(() => {
     :noise="0.04"
     :parallax="0.32"
     :iterations="2"
-    :intensity="1.05"
-    :band-width="5.6"
+    :intensity="1.18"
+    :band-width="5.9"
     transparent
   />
   <main id="main" class="page-shell">
