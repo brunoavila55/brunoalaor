@@ -75,9 +75,26 @@ html {
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  background: var(--background);
+  overflow-x: hidden;
+}
+#app {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+}
+.site-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.78;
   background:
-    radial-gradient(ellipse at 50% 22%, #5f758f80, transparent 63%),
+    radial-gradient(circle at 50% 18%, #5f758f2e, transparent 52%),
     var(--background);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
 }
 button,
 a {
@@ -357,12 +374,16 @@ h1 {
   font-size: var(--text-sm);
   font-weight: 500;
 }
-.profile-contact-link > svg,
-.profile-contact-link > .contact-brand-icon {
+.profile-contact-link.specular-button {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+}
+.profile-contact-link .specular-button__content > svg,
+.profile-contact-link .specular-button__content > .contact-brand-icon {
   flex-shrink: 0;
   color: var(--accent);
 }
-.profile-contact-link > svg:last-child {
+.profile-contact-link .specular-button__content > svg:last-child {
   margin-left: auto;
   opacity: 0.65;
 }

@@ -13,6 +13,8 @@ import CareerPanel from "./CareerPanel.vue";
 import CollectionPanel from "./CollectionPanel.vue";
 import ProjectsPanel from "./ProjectsPanel.vue";
 import ContactIcon from "./ContactIcon.vue";
+import SpecularButton from "./SpecularButton.vue";
+import Aurora from "./Aurora.vue";
 
 const safeLink = (url) => (/^https:\/\//i.test(url ?? "") ? url : null);
 const emailLink = computed(() =>
@@ -64,6 +66,13 @@ onMounted(() => {
 
 <template>
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
+  <Aurora
+    class="site-aurora"
+    :color-stops="['#1e3a52', '#5f758f', '#bd9f67']"
+    :blend="0.55"
+    :amplitude="0.7"
+    :speed="0.25"
+  />
   <main id="main" class="page-shell">
     <section class="profile" :aria-label="`Perfil de ${profile.name}`">
       <div class="profile-cover">
@@ -110,10 +119,24 @@ onMounted(() => {
           aria-label="Redes sociais e contato"
           tabindex="-1"
         >
-          <a
+          <SpecularButton
             v-for="contact in contacts"
             :key="contact.id"
             class="profile-contact-link"
+            size="sm"
+            :radius="6"
+            tint="#1e3a52"
+            :tint-opacity="0.2"
+            text-color="#e9f0f7"
+            line-color="#bd9f67"
+            base-color="#a7867f"
+            :intensity="1.35"
+            :shine-size="12"
+            :shine-fade="34"
+            :thickness="1"
+            :speed="0.35"
+            follow-mouse
+            :proximity="180"
             :href="contact.href"
             :target="contact.external ? '_blank' : undefined"
             :rel="contact.external ? 'noopener noreferrer' : undefined"
@@ -122,7 +145,7 @@ onMounted(() => {
             <ContactIcon :name="contact.id" />
             <span>{{ contact.label }}</span>
             <ArrowUpRight :size="12" aria-hidden="true" />
-          </a>
+          </SpecularButton>
         </nav>
       </div>
     </section>
