@@ -71,16 +71,16 @@ onMounted(() => {
     class="site-color-bends"
     :colors="['#2f89a8', '#647da8', '#bd9f67']"
     :rotation="100"
-    :speed="0.2"
+    :speed="0.12"
     :scale="1"
     :frequency="1"
     :warp-strength="1"
-    :mouse-influence="0.9"
-    :noise="0.06"
-    :parallax="0.42"
+    :mouse-influence="0.5"
+    :noise="0.025"
+    :parallax="0.25"
     :iterations="2"
-    :intensity="1.5"
-    :band-width="6"
+    :intensity="0.95"
+    :band-width="5.2"
     transparent
   />
   <main id="main" class="page-shell">
