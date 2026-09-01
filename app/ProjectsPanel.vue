@@ -34,8 +34,10 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
         }}</span>
       </div>
       <h3 :id="`project-${project.id}-title`">{{ project.name }}</h3>
-      <p class="showcase-subtitle">{{ project.subtitle }}</p>
-      <p class="showcase-description">{{ project.description }}</p>
+      <p class="showcase-subtitle reading-column">{{ project.subtitle }}</p>
+      <p class="showcase-description reading-column">
+        {{ project.description }}
+      </p>
       <ul class="showcase-features" aria-label="Funcionalidades">
         <li v-for="feature in project.features" :key="feature">
           {{ feature }}
@@ -43,7 +45,9 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
       </ul>
       <div v-if="project.impact" class="showcase-impact">
         <h4>Na operação do provedor</h4>
-        <p>{{ project.impact }}</p>
+        <p class="reading-column reading-column--compact">
+          {{ project.impact }}
+        </p>
       </div>
       <div class="showcase-footer">
         <ul class="showcase-stack" aria-label="Tecnologias utilizadas">
@@ -103,7 +107,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 .showcase-description {
   margin-top: var(--space-4);
   font-size: var(--text-base);
-  line-height: 1.8;
+  line-height: 1.65;
   color: var(--text);
 }
 .showcase-features,
@@ -137,7 +141,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 }
 .showcase-impact p {
   font-size: var(--text-sm);
-  line-height: 1.8;
+  line-height: 1.65;
   color: var(--muted);
   margin-top: var(--space-1);
 }

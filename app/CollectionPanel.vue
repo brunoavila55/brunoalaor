@@ -36,7 +36,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
         <h2 id="skills-title"><Server :size="17" /> Competências</h2>
         <span class="section-note">CONHECIMENTOS TÉCNICOS</span>
       </div>
-      <div class="professional-intro">
+      <div class="professional-intro reading-column">
         <span class="section-kicker">TECNOLOGIAS E MÉTODOS</span>
         <h3>Conhecimento aplicado à infraestrutura.</h3>
         <p>
@@ -110,7 +110,9 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
             <div class="skill-detail-title">
               <h4>{{ skill.name }}</h4>
             </div>
-            <p>{{ skill.description }}</p>
+            <p class="reading-column reading-column--compact">
+              {{ skill.description }}
+            </p>
             <div class="skill-applications">
               <h5>Aplicações e conhecimentos</h5>
               <ul>
@@ -119,7 +121,9 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
             </div>
             <div class="skill-evidence">
               <h5>Experiência prática</h5>
-              <p>{{ skill.evidence }}</p>
+              <p class="reading-column reading-column--compact">
+                {{ skill.evidence }}
+              </p>
             </div>
             <a
               v-if="safeLink(skill.projectUrl)"
@@ -145,13 +149,14 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   letter-spacing: -0.5px;
   margin: var(--space-3) 0;
   color: var(--foreground);
-  max-width: 430px;
+  max-width: none;
+  white-space: nowrap;
 }
 .professional-intro > p {
   font-size: var(--text-base);
   color: var(--muted);
   max-width: 460px;
-  line-height: 1.9;
+  line-height: 1.65;
 }
 .skill-filters {
   display: flex;
@@ -208,7 +213,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 }
 .skill-row.selected {
   border-color: var(--accent);
-  background: var(--surface-selected);
+  background: #1e3a52;
 }
 .skill-row:hover {
   background: var(--surface-raised);
@@ -248,7 +253,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 .skill-detail {
   /* Todos os textos reservam espaço na mesma célula para evitar saltos ao selecionar. */
   grid-area: 1 / 1;
-  background: var(--surface-raised);
+  background: #1e3a52;
   border: 1px solid var(--border);
   padding: var(--space-5);
   border-radius: var(--radius-md);
@@ -278,7 +283,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 .skill-detail > p,
 .skill-evidence p {
   font-size: var(--text-sm);
-  line-height: 1.9;
+  line-height: 1.65;
   color: var(--muted);
 }
 .skill-applications {
@@ -326,6 +331,10 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
   }
 }
 @media (max-width: 800px) and (min-width: 601px) {
+  .professional-intro h3 {
+    max-width: 430px;
+    white-space: normal;
+  }
   .skill-list {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -333,6 +342,7 @@ const safeLink = (url) => (/^https:\/\//i.test(url || "") ? url : null);
 @media (max-width: 600px) {
   .professional-intro h3 {
     font-size: var(--text-2xl);
+    white-space: normal;
   }
   .skill-filters button {
     font-size: var(--text-2xs);

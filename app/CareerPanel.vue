@@ -49,10 +49,14 @@ const previous = computed(() =>
         <CalendarDays :size="13" /> {{ current.period }}
         <span v-if="current.location">· {{ current.location }}</span>
       </p>
-      <p class="position-description">{{ current.description }}</p>
+      <p class="position-description reading-column">
+        {{ current.description }}
+      </p>
       <div v-if="current.focus" class="position-focus">
         <h4>Área de atuação</h4>
-        <p>{{ current.focus }}</p>
+        <p class="reading-column reading-column--compact">
+          {{ current.focus }}
+        </p>
       </div>
       <div v-if="current.highlights.length" class="position-highlights">
         <h4>Responsabilidades e contribuições</h4>
@@ -103,7 +107,9 @@ const previous = computed(() =>
               </p>
             </div>
           </div>
-          <p class="position-description">{{ job.description }}</p>
+          <p class="position-description reading-column">
+            {{ job.description }}
+          </p>
           <details v-if="job.highlights.length" class="position-details">
             <summary>
               Responsabilidades e contribuições <ChevronDown :size="15" />
@@ -197,13 +203,12 @@ const previous = computed(() =>
 }
 .position-description {
   font-size: var(--text-base);
-  line-height: 1.9;
+  line-height: 1.65;
   color: var(--text);
   margin-top: var(--space-4);
 }
 .current-position > .position-description {
   margin-top: var(--space-3);
-  line-height: 1.7;
 }
 .position-focus {
   margin-top: var(--space-6);
@@ -220,7 +225,7 @@ const previous = computed(() =>
 .position-focus p {
   font-size: var(--text-sm);
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.65;
   margin-top: var(--space-2);
 }
 .position-highlights {

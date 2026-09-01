@@ -139,7 +139,7 @@ onMounted(() => {
             <h2 id="about-title"><Compass :size="17" /> Sobre mim</h2>
             <span class="section-note">APRESENTAÇÃO</span>
           </div>
-          <div class="about-content">
+          <div class="about-content reading-column">
             <p v-for="paragraph in profile.bio" :key="paragraph">
               {{ paragraph }}
             </p>
@@ -155,7 +155,7 @@ onMounted(() => {
             <h2>Perfil profissional</h2>
             <Compass :size="16" />
           </div>
-          <p>
+          <p class="reading-column reading-column--compact">
             Comprometido, pontual e proativo, com facilidade de adaptação e
             aprendizado contínuo. Organizado, atento a detalhes e responsável,
             trabalha bem tanto sozinho quanto em equipe, sempre buscando
