@@ -15,7 +15,7 @@ Abra http://localhost:3000.
 
 ```bash
 npm run build       # compilação de produção e verificação TypeScript
-npm start           # servir a compilação de produção
+npm start           # prévia local da build no runtime do Workers
 npm run typecheck   # verificar os tipos
 npm run test:e2e    # interações em desktop e celular
 ```
@@ -43,7 +43,19 @@ Cada projeto abre um diálogo nativo com contexto, construção, funcionalidades
 
 Os perfis e o contato foram aproveitados do conteúdo existente: LinkedIn `/in/brunoalaor/`, GitHub `brunoavila55` e `contato@brunoalaor.com.br`.
 
-A raiz agora produz uma aplicação Next.js. Para publicar, use um ambiente compatível com Next.js/Node; o antigo processo Vite/Worker está arquivado em `legado/`.
+## Cloudflare Workers
+
+A build exporta o Next.js como site estático. Imagens WebP e fontes locais são servidas diretamente, e as animações e interações continuam no navegador.
+
+- Worker existente: `brunoalaor`.
+- Build na Cloudflare: `npm run build`.
+- Deploy: `npm run deploy` (ou `npx wrangler deploy`).
+- Verificação local de empacotamento: `npm run deploy:check`.
+- Node.js: 22, definido em `.node-version`.
+
+A configuração principal é `wrangler.json`. A build também gera `dist/client/`, `dist/server/index.js` e `dist/server/wrangler.json`, preservando o caminho de deploy da versão anterior. Assim, um comando existente como `npx wrangler deploy --config dist/server/wrangler.json` também funciona.
+
+O Next.js gera primeiro `out/`; `scripts/build-worker.mjs` prepara os arquivos de deploy em `dist/`. Use `npm start` para verificar essa saída no Workers local. O portfólio não depende de um servidor Next.js ou do endpoint `/_next/image` em produção.
 
 ## Referências
 
