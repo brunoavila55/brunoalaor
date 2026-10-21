@@ -39,7 +39,7 @@ Os testes usam Chromium. Se necessário, instale o navegador com `npx playwright
 
 A animação de entrada usa GSAP. A rolagem Lenis compartilha o relógio com GSAP e sincroniza os efeitos de rolagem. O retrato responde ao ponteiro, os botões usam Magnet e o texto de assinatura usa DecryptedText. As animações respeitam a preferência por movimento reduzido.
 
-Cada projeto abre um diálogo nativo com contexto, construção, funcionalidades e link externo real. Escape fecha o diálogo, o foco volta para o botão original e a rolagem da página é restaurada. LinkedIn e GitHub aparecem na navegação, na abertura e no contato. O e-mail pode ser copiado, com confirmação acessível e alternativa visível em caso de falha.
+Cada projeto abre um diálogo nativo com contexto, construção, funcionalidades e link externo real. Escape fecha o diálogo, o foco volta para o botão original e a rolagem da página é restaurada. LinkedIn e GitHub aparecem na navegação, na abertura e no contato. O WhatsApp usa o número (55) 99957-2116, com atalho no contato e botão flutuante. O e-mail pode ser copiado, com confirmação acessível e alternativa visível em caso de falha.
 
 Os perfis e o contato foram aproveitados do conteúdo existente: LinkedIn `/in/brunoalaor/`, GitHub `brunoavila55` e `contato@brunoalaor.com.br`.
 

@@ -2505,3 +2505,52 @@ h2 {
     border-color: #34445c;
   }
 }
+
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 56px;
+  min-height: 56px;
+  padding: 14px 21px;
+  border: 1px solid #6ce2a466;
+  border-radius: 100px;
+  background: #12623f;
+  color: #f0fff5;
+  box-shadow: 0 8px 28px #0005;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    background 0.25s,
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  background: #167b4e;
+  box-shadow: 0 12px 30px #0006;
+}
+.contact-social {
+  flex-wrap: wrap;
+}
+.site-footer {
+  padding-bottom: 84px;
+}
+@media (max-width: 700px) {
+  .whatsapp-float {
+    right: 18px;
+    bottom: max(18px, env(safe-area-inset-bottom));
+    padding: 14px;
+  }
+  .whatsapp-float > span {
+    display: none;
+  }
+  .contact-social {
+    gap: 10px 20px;
+  }
+}

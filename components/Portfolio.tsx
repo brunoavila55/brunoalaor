@@ -15,7 +15,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { Github, Linkedin } from "./BrandIcons";
+import { Github, Linkedin, Whatsapp } from "./BrandIcons";
 import Magnet from "./react-bits/Magnet";
 import DecryptedText from "./react-bits/DecryptedText";
 import OrbitPortrait from "./OrbitPortrait";
@@ -26,6 +26,7 @@ const social = {
   github: "https://github.com/brunoavila55",
   linkedin: "https://www.linkedin.com/in/brunoalaor/",
   email: "contato@brunoalaor.com.br",
+  whatsapp: "https://wa.me/5555999572116",
 };
 const external = { target: "_blank", rel: "noopener noreferrer" };
 
@@ -587,6 +588,13 @@ export default function Portfolio() {
                 </span>
               </div>
               <div className="contact-social">
+                <a
+                  href={social.whatsapp}
+                  {...external}
+                  aria-label="WhatsApp de Bruno, (55) 99957-2116"
+                >
+                  <Whatsapp size={20} /> WhatsApp <ArrowUpRight size={17} />
+                </a>
                 <a href={social.linkedin} {...external}>
                   <Linkedin size={20} />
                   LinkedIn
@@ -602,6 +610,16 @@ export default function Portfolio() {
           </div>
         </section>
       </main>
+
+      <a
+        href={social.whatsapp}
+        {...external}
+        className="whatsapp-float"
+        aria-label="Conversar com Bruno pelo WhatsApp, (55) 99957-2116"
+      >
+        <Whatsapp size={24} />
+        <span>WhatsApp</span>
+      </a>
 
       <footer className="site-footer page-width">
         <a href="#inicio" className="wordmark">
